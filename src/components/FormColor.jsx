@@ -1,5 +1,5 @@
 import { Card, Form, Button } from 'react-bootstrap';
-import ListColor from './ListColor/ListColor';
+import ListColor from './ListColor';
 import { useState, useEffect } from 'react';
 
 const FormColor = () => {
@@ -14,9 +14,7 @@ const FormColor = () => {
   };
 
   const agregarColor = (color) => {
-    //se agrega nueva tarea a la lista de tareas
     setListaColores([...listaColores, color]);
-    //limpiar el input Tarea
     setColor('');
   };
 
