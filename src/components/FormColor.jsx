@@ -8,6 +8,10 @@ const FormColor = () => {
   const [color, setColor] = useState('');
   const [listaColores, setListaColores] = useState(colorLocalStorage);
 
+  useEffect(() => {
+    localStorage.setItem('listaColores', JSON.stringify(listaColores));
+  }, [listaColores]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     agregarColor(color);
@@ -18,10 +22,10 @@ const FormColor = () => {
     setColor('');
   };
 
-  useEffect(() => {
-    localStorage.setItem('listaColores', JSON.stringify(listaColores));
-  }, [listaColores]);
-
+  const borrarColor = (nombreColor) => {
+    let _listaColores = listaColores.filter((item) => item !== nombreColor);
+    setListaColores(_listaColores);
+  };
   return (
     <>
       {/* Agrego una card */}
@@ -48,7 +52,7 @@ const FormColor = () => {
           </Form>
         </Card.Body>
       </Card>
-      <ListColor listaColores={listaColores} />
+      <ListColor listaColores={listaColores} borrarColor={borrarColor} />
     </>
   );
 };
