@@ -50,7 +50,7 @@ const FormColor = () => {
           </Form>
         </Card.Body>
       </Card>
-      <ListColor />
+      <ListColor listaColores={listaColores} />
     </>
   );
 };
